@@ -3,7 +3,7 @@
 # ENCODE-DREAM in vivo transcription factor binding site (TFBS) Prediction Challenge
 # Team: HINT
 # Authors: Eduardo G. Gusmao, Zhijian Li and Ivan G. Costa
-# Email: eduardo.gusmao@rwth-aachen.de / ivan.costa@rwth-aachen.de
+# Email: (eduardo.gusmao, zhijian.li, ivan.costa)@rwth-aachen.de
 ######################################################################################
 
 ######################################################################################
