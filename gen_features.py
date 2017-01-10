@@ -3,11 +3,13 @@
 import os
 
 
-genomeFileName = "/hpcwork/izkf/projects/TfbsPrediction/Data/HG19/hg19.fa"  ## change this line
-
+genomeFileName = "/hpcwork/izkf/projects/TfbsPrediction/Data/HG19/hg19.fa"  # change this line
+bedLoc = "/hpcwork/izkf/projects/dream_tfbs/local/annotations/"  # change this line
+dnaseBamLoc = "/hpcwork/izkf/projects/dream_tfbs/exp/dnase/"  # change this line
+outputLoc = "/hpcwork/izkf/projects/dream_tfbs/exp/full_mpbs_footprints_tc/"  # change this line
 
 # Iterating on the challenge level
-challengeList = ["train", "test", "ladder"]
+challengeList = ["train", "final", "ladder"]
 for challenge in challengeList:
 
     # Challenge Parameters
@@ -32,12 +34,6 @@ for challenge in challengeList:
         if(ll[challengeCol] == "."):
             continue
         factor = ll[0]
-        if((challenge == "train") and (factor != "CTCF" and factor != "E2F1" and factor != "EGR1" and factor != "FOXA1" and factor != "FOXA2" and factor != "GABPA" and factor != "HNF4A" and factor != "JUND" and factor != "MAX" and factor != "NANOG" and factor != "REST" and factor != "TAF1")):
-            continue
-        if((challenge == "test") and (factor != "CTCF" and factor != "E2F1" and factor != "EGR1" and factor != "FOXA1" and factor != "FOXA2" and factor != "GABPA" and factor != "HNF4A" and factor != "JUND" and factor != "MAX" and factor != "NANOG" and factor != "REST" and factor != "TAF1")):
-            continue
-        if((challenge == "ladder") and (factor != "CTCF" and factor != "EGR1")):
-            continue
         trainCellList = ll[1].split(",")
         testCellList = ll[challengeCol].split(",")
 
@@ -57,58 +53,31 @@ for challenge in challengeList:
         for cell in testCellList:
 
             # Iterating on chromosomes
-            bedLoc = "/hpcwork/izkf/projects/dream_tfbs/local/annotations/split_" + challenge + "_chrom/"
-
-            chr1L = ["chr1." + str(e) for e in range(1, 11)]
-            chr2L = ["chr2." + str(e) for e in range(1, 11)]
-            chr3L = ["chr3." + str(e) for e in range(1, 11)]
-            chr4L = ["chr4." + str(e) for e in range(1, 11)]
-            chr5L = ["chr5." + str(e) for e in range(1, 11)]
-            chr6L = ["chr6." + str(e) for e in range(1, 11)]
-            chr7L = ["chr7." + str(e) for e in range(1, 11)]
-            chr8L = ["chr8." + str(e) for e in range(1, 11)]
-            chr9L = ["chr9." + str(e) for e in range(1, 11)]
-            chr10L = ["chr10." + str(e) for e in range(1, 11)]
-            chr11L = ["chr11." + str(e) for e in range(1, 11)]
-            chr12L = ["chr12." + str(e) for e in range(1, 11)]
-            chr13L = ["chr13." + str(e) for e in range(1, 11)]
-            chr14L = ["chr14." + str(e) for e in range(1, 11)]
-            chr15L = ["chr15." + str(e) for e in range(1, 11)]
-            chr16L = ["chr16." + str(e) for e in range(1, 11)]
-            chr17L = ["chr17." + str(e) for e in range(1, 11)]
-            chr18L = ["chr18." + str(e) for e in range(1, 11)]
-            chr19L = ["chr19." + str(e) for e in range(1, 11)]
-            chr20L = ["chr20." + str(e) for e in range(1, 11)]
-            chr21L = ["chr21." + str(e) for e in range(1, 11)]
-            chr22L = ["chr22." + str(e) for e in range(1, 11)]
-            chrXL = ["chrX." + str(e) for e in range(1, 11)]
-
             if(challenge == "train"):
-                chromList = chr2L + chr9L + chr22L
-            if(challenge == "test"):
-                chromList = chr1L + chr2L + chr3L + chr4L + chr5L + chr6L + chr7L + chr8L + chr9L + chr10L + chr11L + \
-                    chr12L + chr13L + chr14L + chr15L + chr16L + chr17L + chr18L + \
-                    chr19L + chr20L + chr21L + chr22L + chrXL
+                chromList = ["chr2", "chr22", "chr9"]
+            if(challenge == "final"):
+                chromList = ["chr1", "chr10", "chr11", "chr12", "chr13", "chr14", "chr15",
+                             "chr16", "chr17", "chr18", "chr19", "chr2", "chr20", "chr21",
+                             "chr22", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9", "chrX"]
             if(challenge == "ladder"):
-                chromList = chr1L + chr8L + chr21L
+                chromList = ["chr1", "chr21", "chr8"]
 
             for chrom in chromList:
 
                 # Parameters
-                bedFileName = "/hpcwork/izkf/projects/dream_tfbs/local/annotations/split_" + \
-                    challenge + "_chrom/" + challenge + "_" + chrom + ".bed"
+                bedFileName = bedLoc + challenge + "_" + chrom + ".bed"
                 pfmFileNameList = ",".join(pfmList)
 
                 footprintBamFileName = "./data/footprints/results/" + cell + ".bam"
-                dnaseBamFileName = "/hpcwork/izkf/projects/dream_tfbs/exp/dnase/" + cell + "/" + cell + "_DNase.bam"
-                ol = "/hpcwork/izkf/projects/dream_tfbs/exp/full_mpbs_footprints_tc/" + challenge + "_v5/"
+                dnaseBamFileName = dnaseBamLoc + cell + "/" + cell + "_DNase.bam"
+                ol = outputLoc + challenge + "/"
                 os.system("mkdir -p " + ol)
                 outputFileName = ol + challengeLabel + "." + factor + "." + cell + "." + chrom + ".tab"
 
                 # Execution on the cluster
                 myL = "_".join([challenge, factor, cell, chrom])
                 clusterCommand = "bsub -J " + myL + " -o " + myL + "_out.txt -e " + myL + "_err.txt "
-                clusterCommand += "-W 120:00 -M 24000 -S 100 -R \"select[hpcwork]\" ./pipeline_final.zsh "
+                clusterCommand += "-W 120:00 -M 24000 -S 100 -R \"select[hpcwork]\" ./features.zsh "
                 clusterCommand += bedFileName + " " + pfmFileNameList + " " + genomeFileName + \
                     " " + footprintBamFileName + " "
                 clusterCommand += dnaseBamFileName + " " + outputFileName
@@ -116,7 +85,7 @@ for challenge in challengeList:
 
                 # Execution on your computer
                 myL = "_".join([challenge, factor, cell, chrom])
-                clusterCommand += "./pipeline_final.zsh "
+                clusterCommand += "./features.zsh "
                 clusterCommand += bedFileName + " " + pfmFileNameList + " " + genomeFileName + \
                     " " + footprintBamFileName + " "
                 clusterCommand += dnaseBamFileName + " " + outputFileName
