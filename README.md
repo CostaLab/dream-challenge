@@ -31,6 +31,7 @@ sudo python setup.py install
 ######################################################################################
 
 Step 1: Generating Features
+	
 	please open the file "main.py" in any text editor. Modify the lines marked with the comment "Change this line" at the end.
 
 		2.1. The variable "originalDNaseLocation" should point to the path in which all training DNase-seq datasets reside.
