@@ -30,8 +30,7 @@ sudo python setup.py install
 # 2. Execution Instructions:
 ######################################################################################
 
-Three Steps:
-    Our solution contails three
+Step 1: Generating Features
 
 
 please open the file "main.py" in any text editor. Modify the lines marked with the comment "Change this line" at the end.
