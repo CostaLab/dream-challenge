@@ -1,10 +1,9 @@
 
-######################################################################################
 # ENCODE-DREAM in vivo transcription factor binding site (TFBS) Prediction Challenge
 # Team: HINT
 # Authors: Eduardo G. Gusmao, Zhijian Li and Ivan G. Costa
 # Email: (eduardo.gusmao, zhijian.li, ivan.costa)@rwth-aachen.de
-######################################################################################
+
 
 ######################################################################################
 # 1. Prerequisites
@@ -30,7 +29,11 @@ sudo python setup.py install
 # 2. Execution Instructions:
 ######################################################################################
 
-To execute our solution script, please open the file "main.py" in any text editor. Modify the lines marked with the comment "Change this line" at the end.
+Three Steps:
+    Our solution contails three
+
+
+please open the file "main.py" in any text editor. Modify the lines marked with the comment "Change this line" at the end.
 
 	2.1. The variable "originalDNaseLocation" should point to the path in which all training DNase-seq datasets reside.
 	2.2. The variable "genomeFileName" should point to the fasta file containing the genome sequence.
