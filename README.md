@@ -31,13 +31,11 @@ sudo python setup.py install
 ######################################################################################
 
 Step 1: Generating Features
+	please open the file "main.py" in any text editor. Modify the lines marked with the comment "Change this line" at the end.
 
-
-please open the file "main.py" in any text editor. Modify the lines marked with the comment "Change this line" at the end.
-
-	2.1. The variable "originalDNaseLocation" should point to the path in which all training DNase-seq datasets reside.
-	2.2. The variable "genomeFileName" should point to the fasta file containing the genome sequence.
-	2.3. The variable "annotationBedFileName" should point to the bed file containing the non-merged challenge region annotations
+		2.1. The variable "originalDNaseLocation" should point to the path in which all training DNase-seq datasets reside.
+		2.2. The variable "genomeFileName" should point to the fasta file containing the genome sequence.
+		2.3. The variable "annotationBedFileName" should point to the bed file containing the non-merged challenge region annotations
 
 After changing these lines just execute the following command:
 
