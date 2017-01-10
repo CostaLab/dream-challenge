@@ -84,11 +84,11 @@ for challenge in challengeList:
                 os.system(clusterCommand)
 
                 # Execution on your computer
-                myL = "_".join([challenge, factor, cell, chrom])
-                clusterCommand += "./features.zsh "
-                clusterCommand += bedFileName + " " + pfmFileNameList + " " + genomeFileName + \
-                    " " + footprintBamFileName + " "
-                clusterCommand += dnaseBamFileName + " " + outputFileName
-                os.system(clusterCommand)
+                # myL = "_".join([challenge, factor, cell, chrom])
+                # clusterCommand += "./features.zsh "
+                # clusterCommand += bedFileName + " " + pfmFileNameList + " " + genomeFileName + \
+                #     " " + footprintBamFileName + " "
+                # clusterCommand += dnaseBamFileName + " " + outputFileName
+                # os.system(clusterCommand)
 
     tfCellTableFile.close()
