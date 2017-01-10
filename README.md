@@ -34,14 +34,45 @@ Step 1: Generating Features
 	
 	please open the file "gen_features.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
 
-		2.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
-		2.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
-		2.3. The variable "dnaseBamLoc" should point to the bed file containing the 
+		2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
+		2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
+		2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the 
 
 After changing these lines just execute the following command:
 
 python main.py
 
-The output for the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) will be gzipped in the correct format in the folder "out"
+The output for the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
+will be gzipped in the correct format in the folder "out"
+
+Step 2: Generating Training Data
+	
+	please open the file "gen_data.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
+
+		2.2.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
+		2.2.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
+		2.2.3. The variable "dnaseBamLoc" should point to the bed file containing the 
+
+After changing these lines just execute the following command:
+
+python main.py
+
+The output for the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
+will be gzipped in the correct format in the folder "out"
+
+Step 3: Training Model and Prediction
+	
+	please open the file "gen_data.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
+
+		2.3.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
+		2.3.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
+		2.3.3. The variable "dnaseBamLoc" should point to the bed file containing the 
+
+After changing these lines just execute the following command:
+
+python main.py
+
+The output for the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
+will be gzipped in the correct format in the folder "out"
 
 
