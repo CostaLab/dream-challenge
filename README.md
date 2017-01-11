@@ -36,14 +36,14 @@ Step 1: Generating Features
 
 		2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
 		2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
-		2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the 
+		2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
 
 After changing these lines just execute the following command:
 
-python main.py
+python features.py
 
-The output for the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
-will be gzipped in the correct format in the folder "out"
+The features of the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
+and chromsome (variable "chrom" in the code) for challenge (train, leader, final ) will be in the correspond folder "./output/". 
 
 Step 2: Training Model and Prediction
 	
@@ -54,9 +54,9 @@ Step 2: Training Model and Prediction
 
 After changing these lines just execute the following command:
 
-python data.py factor cell_list
+python call_classifier.py
 
-The output for the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
-will be gzipped in the correct format in the folder "out"
+The predciton file for the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
+will be gzipped in the correct format in the folder "./output/prediction/"
 
 
