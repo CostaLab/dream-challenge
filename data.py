@@ -3,23 +3,23 @@ import sys
 
 LABELS_DIR = "/hpcwork/izkf/projects/dream_tfbs/local/ChIPseq/labels/"  # change this line
 
-TRAINING_LABELS_DIR = "./data/training/labels/"
-TRAINING_FEATURES_DIR = "./data/training/features/"
-TRAINING_DIR = "./data/training/"
+
+TRAINING_FEATURES_DIR = "./output/train/features/"
+TRAINING_DIR = "./output/train/"
 
 
-chrom_list = list()
+chrom_list = ["chr2", "chr22", "chr9"]
 
 
 def get_labels_data(factor, cell_list):
     labels_fname = os.path.join(LABELS_DIR, "{}.train.labels.tsv.gz".format(factor))
-    ziped_labels_fname = os.path.join(TRAINING_LABELS_DIR, "{}.train.labels.tsv.gz".format(factor))
-    unziped_labels_fname = os.path.join(TRAINING_LABELS_DIR, "{}.train.labels.tsv".format(factor))
+    ziped_labels_fname = os.path.join(TRAINING_DIR, "{}.train.labels.tsv.gz".format(factor))
+    unziped_labels_fname = os.path.join(TRAINING_DIR, "{}.train.labels.tsv".format(factor))
 
     remove_list = list()
     remove_list.append(unziped_labels_fname)
 
-    os.system("cp " + labels_fname + " " + TRAINING_LABELS_DIR)
+    os.system("cp " + labels_fname + " " + TRAINING_DIR)
     os.system("gzip -d " + ziped_labels_fname)
 
     header = list()
@@ -27,13 +27,13 @@ def get_labels_data(factor, cell_list):
         header = file.readline().strip().split("\t")
 
     for cell in cell_list:
-        factor_cell_labels_fname = os.path.join(TRAINING_LABELS_DIR, "{}.{}.train.labels".format(factor, cell))
+        factor_cell_labels_fname = os.path.join(TRAINING_DIR, "{}.{}.train.labels".format(factor, cell))
         index = header.index(cell) + 1
         os.system("cut -f1-3," + str(index) + " " + unziped_labels_fname + " > " + factor_cell_labels_fname)
         remove_list.append(factor_cell_labels_fname)
         for chrom in chrom_list:
             factor_cell_chr_labels_fname = os.path.join(
-                TRAINING_LABELS_DIR, "{}.{}.{}.train.labels".format(factor, cell, chrom))
+                TRAINING_DIR, "{}.{}.{}.train.labels".format(factor, cell, chrom))
             os.system("grep -w " + str(chrom) + " " + factor_cell_labels_fname + " > " + factor_cell_chr_labels_fname)
 
     for e in remove_list:
@@ -41,7 +41,6 @@ def get_labels_data(factor, cell_list):
 
 
 def get_training_data(factor, cell_list):
-    chrom_list = ["chr2", "chr22", "chr9"]
     for cell in cell_list:
         remove_list = []
         training_fname = os.path.join(TRAINING_DIR, "{}.{}".format(factor, cell))
@@ -51,13 +50,14 @@ def get_training_data(factor, cell_list):
 
             # Fetch the features
             cut_features_fname = os.path.join(TRAINING_DIR, "T.{}.{}.{}.tab.cut".format(factor, cell, chrom))
-            os.system("cut -f4- " + features_fname + " > " + cut_features_fname)
+            os.system("sed -1d " + features_fname + " | cut -f4- > " + cut_features_fname)
 
             # Fetch the labels
             training_labels_fname = os.path.join(
-                TRAINING_LABELS_DIR, "{}.{}.{}.train.labels".format(factor, cell, chrom))
+                TRAINING_DIR, "{}.{}.{}.train.labels".format(factor, cell, chrom))
             cut_labels_fname = os.path.join(TRAINING_DIR, "{}.{}.{}.train.labels.cut".format(factor, cell, chrom))
             os.system("cut -f4 " + training_labels_fname + " > " + cut_labels_fname)
+            remove_list.append(training_labels_fname)
 
             # Merge them
             merge_data_fname = os.path.join(TRAINING_DIR, "{}.{}.{}.merge".format(factor, cell, chrom))
