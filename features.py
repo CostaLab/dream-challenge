@@ -8,7 +8,7 @@ bedLoc = "/hpcwork/izkf/projects/dream_tfbs/local/annotations/"  # change this l
 dnaseBamLoc = "/hpcwork/izkf/projects/dream_tfbs/exp/dnase/"  # change this line
 
 # Iterating on the challenge level
-challengeList = ["train", "final", "ladder"]
+challengeList = ["train"]
 for challenge in challengeList:
 
     # Challenge Parameters
@@ -53,7 +53,7 @@ for challenge in challengeList:
 
             # Iterating on chromosomes
             if(challenge == "train"):
-                chromList = ["chr2", "chr22", "chr9"]
+                chromList = ["chr2"]
             if(challenge == "final"):
                 chromList = ["chr1", "chr10", "chr11", "chr12", "chr13", "chr14", "chr15",
                              "chr16", "chr17", "chr18", "chr19", "chr2", "chr20", "chr21",
@@ -69,7 +69,7 @@ for challenge in challengeList:
 
                 footprintBamFileName = "./data/footprints/results/" + cell + ".bam"
                 dnaseBamFileName = dnaseBamLoc + cell + "/" + cell + "_DNase.bam"
-                ol = "./output/" + challenge + "/"
+                ol = "./output/" + challenge + "/features/"
                 os.system("mkdir -p " + ol)
                 outputFileName = ol + challengeLabel + "." + factor + "." + cell + "." + chrom + ".tab"
 
