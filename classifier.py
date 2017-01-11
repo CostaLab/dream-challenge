@@ -5,15 +5,11 @@ import numpy as np
 import lightgbm as lgb
 
 
-TRAINING_DIR = "./data/training/"
-TRAINING_FEATURES_DIR = "./data/training/features/"
-
-
-FINAL_DIR = "./data/final/predictions/"
-FINAL_FEATURES_DIR = "./data/final/features/"
+TRAINING_DIR = "./output/train/"
+FINAL_FEATURES_DIR = "./output/final/features/"
 
 MODEL_DIR = "./output/model/"
-TRAINING_PREDICTION_DIR = "./output/prediction/"
+PREDICTION_DIR = "./output/prediction/"
 
 
 def get_data(tf, cell):
@@ -80,12 +76,14 @@ def final(factor, cell_list, gbm_dict):
                   "chr2", "chr20", "chr21", "chr22", "chr3", "chr4", "chr5", "chr6", "chr7",
                   "chr8", "chr9", "chrX"]
     for test_cell in cell_list:
-        test_fname = os.path.join(FINAL_DIR, "F.{}.{}.tab".format(factor, test_cell))
+        test_fname = os.path.join(PREDICTION_DIR, "F.{}.{}.tab".format(factor, test_cell))
         with open(test_fname, "a") as test_file:
             for chrom in chrom_list:
                 features_fname = os.path.join(
                     FINAL_FEATURES_DIR, "F.{}.{}.{}.tab".format(factor, test_cell, chrom))
                 with open(features_fname, "r") as file:
+                    #  skip the header
+                    file.readline()
                     lines = file.readlines()
                     for line in lines:
                         data = line.strip().split("\t")
