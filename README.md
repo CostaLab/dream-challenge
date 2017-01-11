@@ -32,7 +32,7 @@ sudo python setup.py install
 
 Step 1: Generating Features
 	
-	please open the file "gen_features.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
+	please open the file "features.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
 
 		2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
 		2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
