@@ -35,6 +35,7 @@ Step 1: Generating Features
 
 		2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
 		2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
+		[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 		[download here](https://www.synapse.org/#!Synapse:syn6184307)
 		2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
 		([download here](#https://www.synapse.org/#!Synapse:syn6176232))
