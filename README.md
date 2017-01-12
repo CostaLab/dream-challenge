@@ -29,14 +29,17 @@ sudo python setup.py install
 # 2. Execution Instructions:
 ######################################################################################
 
-# Step 1: Generating Features
+Step 1: Generating Features
 	
 please open the file "features.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
-	2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
-	2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
-	[download here](https://www.synapse.org/#!Synapse:syn6184307)
-	2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
-	([download here](#https://www.synapse.org/#!Synapse:syn6176232))
+
+2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
+
+2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
+[download here](https://www.synapse.org/#!Synapse:syn6184307)
+
+2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
+([download here](#https://www.synapse.org/#!Synapse:syn6176232))
 
 After changing these lines just execute the following command:
 
