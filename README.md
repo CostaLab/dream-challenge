@@ -35,9 +35,9 @@ Step 1: Generating Features
 
 		2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
 		2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
-		please download it from https://www.synapse.org/#!Synapse:syn6184307
+		<a href="https://www.synapse.org/#!Synapse:syn6184307">download here</a>
 		2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
-		https://www.synapse.org/#!Synapse:syn6176232
+		<a href="https://www.synapse.org/#!Synapse:syn6176232">download here</a>
 
 After changing these lines just execute the following command:
 
@@ -51,7 +51,7 @@ Step 2: Training Model and Prediction
 	please open the file "data.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
 
 		2.2.1. The variable "LABELS_DIR" should point the folder containing the labels file of factors.
-		please download it from https://www.synapse.org/#!Synapse:syn7413983
+		<a href="https://www.synapse.org/#!Synapse:syn7413983">download here</a>
 
 After changing these lines just execute the following command:
 
