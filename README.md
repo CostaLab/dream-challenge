@@ -29,7 +29,7 @@ sudo python setup.py install
 # 2. Execution Instructions:
 ######################################################################################
 
-Step 1: Generating Features
+### Step 1: Generating Features
 	
 please open the file "features.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
 
@@ -48,7 +48,7 @@ python features.py
 The features of the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
 and chromsome (variable "chrom" in the code) for challenge (train, leader, final ) will be in the correspond folder "./output/". 
 
-Step 2: Training Model and Prediction
+### Step 2: Training Model and Prediction
 	
 please open the file "data.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
 
