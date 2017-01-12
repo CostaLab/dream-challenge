@@ -36,10 +36,10 @@ please open the file "features.py" in any text editor. Modify the lines marked w
 2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
 
 2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
-[download here](https://www.synapse.org/#!Synapse:syn6184307)
+([download here](https://www.synapse.org/#!Synapse:syn6184307))
 
 2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
-([download here](#https://www.synapse.org/#!Synapse:syn6176232))
+([download here](https://www.synapse.org/#!Synapse:syn6176232))
 
 After changing these lines just execute the following command:
 
@@ -50,10 +50,10 @@ and chromsome (variable "chrom" in the code) for challenge (train, leader, final
 
 Step 2: Training Model and Prediction
 	
-	please open the file "data.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
+please open the file "data.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
 
-		2.2.1. The variable "LABELS_DIR" should point the folder containing the labels file of factors.
-		([download here](#https://www.synapse.org/#!Synapse:syn7413983))
+2.2.1. The variable "LABELS_DIR" should point the folder containing the labels file of factors.
+([download here](https://www.synapse.org/#!Synapse:syn7413983))
 
 After changing these lines just execute the following command:
 
