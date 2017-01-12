@@ -38,7 +38,7 @@ please open the file "features.py" in any text editor. Modify the lines marked w
 2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
 ([download here](https://www.synapse.org/#!Synapse:syn6184307))
 
-2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
+2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data.
 ([download here](https://www.synapse.org/#!Synapse:syn6176232))
 
 After changing these lines just execute the following command:
