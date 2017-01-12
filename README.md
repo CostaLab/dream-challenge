@@ -29,16 +29,16 @@ sudo python setup.py install
 # 2. Execution Instructions:
 ######################################################################################
 
-### Step 1: Generating Features
+## Step 1: Generating Features
 	
 please open the file "features.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
 
-## 2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
+2.1.1. The variable "genomeFileName" should point to the fasta file containing the genome sequence
 
-## 2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
+2.1.2. The variable "bedLoc" should point to the location containing the bed file of the non-merged challenge region annotations.
 ([download here](https://www.synapse.org/#!Synapse:syn6184307))
 
-## 2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
+2.1.3. The variable "dnaseBamLoc" should point to the bed file containing the DNase-seq data
 ([download here](https://www.synapse.org/#!Synapse:syn6176232))
 
 After changing these lines just execute the following command:
@@ -48,11 +48,11 @@ python features.py
 The features of the specified cell type (variable "cell" in the code) and transcription factor (variable "factor" in the code) 
 and chromsome (variable "chrom" in the code) for challenge (train, leader, final ) will be in the correspond folder "./output/". 
 
-### Step 2: Training Model and Prediction
+## Step 2: Training Model and Prediction
 	
 please open the file "data.py" in any text editor. Modify the lines marked with the comment "change this line" at the end.
 
-## 2.2.1. The variable "LABELS_DIR" should point the folder containing the labels file of factors.
+2.2.1. The variable "LABELS_DIR" should point the folder containing the labels file of factors.
 ([download here](https://www.synapse.org/#!Synapse:syn7413983))
 
 After changing these lines just execute the following command:
